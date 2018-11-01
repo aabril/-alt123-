@@ -1,4 +1,4 @@
-# Web Backend Technical Challenge
+# Express Coding Challenge
 The premise of this challenge is to see the approach you take to:
 - Use an ORM to interact with a simple database model
 - Create a basic routing mechanism for HTTP requests

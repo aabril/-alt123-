@@ -1,0 +1,14 @@
+{
+  "name": "express-code-challenge",
+  "version": "1.0.0",
+  "description": "A coding challenge to assess your ability to navigate an express server implementation.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

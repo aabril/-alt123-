@@ -7,7 +7,7 @@ The premise of this challenge is to see the approach you take to:
 - Test your work with both unit tests and integration tests.
 
 ## Challenge
-1. Use Sequelize or Mongoose to define:
+1. Use [Sequelize](http://docs.sequelizejs.com/manual/installation/getting-started) or [Mongoose](https://mongoosejs.com/) to define:
 
    1.1. A User model which should have basic identifying information:
       - Name
@@ -26,10 +26,10 @@ The premise of this challenge is to see the approach you take to:
       - Author
       
    1.4. Relationships between Users and Institutions, and Books and Institutions.
-2. Create a simple web service using Express to respond to requests
+2. Use [Express](https://expressjs.com/) to respond to requests
 3. Create a test suite using Mocha and Sinon to unit and integration test the routes you’ve created.
 4. Create routes:
-    - `POST /users/signin` Use the passport library to authenticate a user and respond with a successful message that uses the JSend framework
+    - `POST /users/signin` Use the passport library to authenticate a user and respond with a successful message that uses the [JSend](https://labs.omniti.com/labs/jsend) framework
     - `POST /users/create` Creates a user and based on the user’s email domain links them to an institution. Denies creation of a user if their domain does not exist.
     - `GET /books` Once authenticated, responds with a JSON object containing a list of Books that the user has access to via their Institution. 
 5. (Optional): Implement a code coverage tool.

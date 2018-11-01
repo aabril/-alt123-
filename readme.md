@@ -9,23 +9,23 @@ The premise of this challenge is to see the approach you take to:
 ## Challenge
 1. Use [Sequelize](http://docs.sequelizejs.com/manual/installation/getting-started) or [Mongoose](https://mongoosejs.com/) to define:
 
-   1.1. A User model which should have basic identifying information:
+   1.1. A **`User`** model which should have basic identifying information:
       - Name
       - Email address
       - Role (Acceptable entries: ‘student’, ‘academic’, ‘administrator’)
       - Password
 
-   1.2. An Institution model which stores information about a school:
+   1.2. An **`Institution`** model which stores information about a school:
       - Name
       - URL
       - Email domain
       
-   1.3. A Book model which stores information about books:
+   1.3. A **`Book`** model which stores information about books:
       - ISBN
       - Title
       - Author
       
-   1.4. Relationships between Users and Institutions, and Books and Institutions.
+   1.4. Relationships between **`Users`** and **`Institutions`**, and **`Books`** and **`Institutions`**.
 2. Use [Express](https://expressjs.com/) to respond to requests
 3. Create a test suite using Mocha and Sinon to unit and integration test the routes you’ve created.
 4. Create routes:

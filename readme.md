@@ -15,26 +15,25 @@ Please clone this repository and send through your completed coding challenge us
       - Name
       - Email address
       - Role (Acceptable entries: ‘student’, ‘academic’, ‘administrator’)
-      - Password
+      - Password.
 
    1.2. An **`Institution`** model which stores information about a school:
       - Name
       - URL
-      - Email domain
+      - Email domain.
       
    1.3. A **`Book`** model which stores information about books:
       - ISBN
       - Title
-      - Author
+      - Author.
       
    1.4. Relationships between **`Users`** and **`Institutions`**, and **`Books`** and **`Institutions`**.
-2. Use [Express](https://expressjs.com/) to respond to requests
-3. Create a test suite using Mocha and Sinon to unit and integration test the routes you’ve created.
+2. Use [Express](https://expressjs.com/) to respond to requests.
+3. Create a test suite which includes code coverage, to unit and integration test the routes you’ve created.
 4. Create routes:
     - `POST /users/signin` Use the passport library to authenticate a user and respond with a successful message that uses the [JSend](https://labs.omniti.com/labs/jsend) framework
     - `POST /users/create` Creates a user and based on the user’s email domain links them to an institution. Denies creation of a user if their domain does not exist.
-    - `GET /books` Once authenticated, responds with a JSON object containing a list of Books that the user has access to via their Institution. 
-5. (Optional): Implement a code coverage tool.
+    - `GET /books` Once authenticated, responds with a JSON object containing a list of Books that the user has access to via their Institution.
 
 ## Things to keep in mind
 - Security

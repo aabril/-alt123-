@@ -27,13 +27,17 @@ Please clone this repository and send through your completed coding challenge us
       - Title
       - Author.
       
-   1.4. Relationships between **`Users`** and **`Institutions`**, and **`Books`** and **`Institutions`**.
+   1.4. Relationships between **`Users`** and **`Institutions`**, and **`Books`** and **`Institutions`** (Consider #4.3 in the relationships you create).
 2. Use [Express](https://expressjs.com/) to respond to requests.
 3. Create a test suite which includes code coverage, to unit and integration test the routes you’ve created.
 4. Create routes:
-    - `POST /users/signin` Use the passport library to authenticate a user and respond with a successful message that uses the [JSend](https://labs.omniti.com/labs/jsend) framework
-    - `POST /users/create` Creates a user and based on the user’s email domain links them to an institution. Denies creation of a user if their domain does not exist.
-    - `GET /books` Once authenticated, responds with a JSON object containing a list of Books that the user has access to via their Institution.
+
+    4.1 `POST /users/signin` Use the passport library to authenticate a user and respond with a successful message that uses the [JSend](https://labs.omniti.com/labs/jsend) framework
+    
+    4.2 `POST /users/create` Creates a user and based on the user’s email domain links them to an institution. Denies creation of a user if their domain does not exist.
+    
+    4.3 `GET /books` Once authenticated, responds with a JSON object containing a list of Books that the user has access to via their Institution.
+5. (Optional) Provide a [Postman](https://www.getpostman.com/) collection which performs some basically functionality on the routes you've created.
 
 ## Things to keep in mind
 - Security

@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000;
 require('express-jsend'); // https://www.npmjs.com/package/express-jsend
 
 
-const indexController = require('./controllers/index.controller.js');
+const indexController = require('./src/controllers/index.controller.js');
 
 // routes
 function setRoutes(app){

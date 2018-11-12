@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon --watch controllers --watch models --watch tests --watch services --watch index.js index.js",
+    "dev": "nodemon --watch src --watch index.js index.js",
     "test": "PORT=3001 jest --forceExit"
   },
   "author": "",
@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "jest": "^23.6.0",
+    "nodemon": "^1.18.6",
     "supertest": "^3.3.0"
   }
 }

@@ -1,7 +1,30 @@
-/**
- * The book route handler.
- * Responds to a request with body content to demonstrate the app is running as expected.
+/*
+ * book resource handler
  */
-module.exports.list = (req, res, next) => {
-  res.end(`Express Code Challenge Started`);
+function list(req, res) {
+  return res.jsend({})
+}
+
+function item(req, res) {
+  return res.jsend({})
+}
+
+function create(req, res) {
+  return res.jsend({})
+}
+
+function update(req, res) {
+  return res.jsend({})
+}
+
+function destroy(req, res) {
+  return res.jsend({})
+}
+
+module.exports = {
+  list,
+  item,
+  create,
+  update,
+  destroy
 }

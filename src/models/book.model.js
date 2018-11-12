@@ -5,7 +5,11 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const BookSchema = new Schema({
-  isbn: String,
+  isbn: {
+    type: String,
+    required: true,
+    unique: true
+  },
   title: String,
   author: String
 });

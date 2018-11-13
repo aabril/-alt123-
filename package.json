@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon --watch src --watch index.js index.js",
-    "test": "PORT=3001 jest --forceExit"
+    "test": "npm run test:unit && npm run test:functional",
+    "test:functional": "PORT=3001 jest --forceExit --runInBand tests/functional",
+    "test:unit": "jest tests/unit"
   },
   "author": "",
   "license": "ISC",

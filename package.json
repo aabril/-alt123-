@@ -13,6 +13,7 @@
   "dependencies": {
     "express": "^4.16.4",
     "express-jsend": "^0.1.0",
+    "lodash": "^4.17.11",
     "mongoose": "^5.3.11"
   },
   "devDependencies": {

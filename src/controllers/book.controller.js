@@ -1,25 +1,39 @@
 /*
  * book resource handler
  */
-function list(req, res) {
+const _ = require('lodash');
+const Book = require('../models/book.model');
+
+async function list(req, res) {
+  try{
+    const books = await Book.find()
+    return res.jsend(books)
+  }catch(err){
+    return handleError(res, err)
+  }
+}
+
+async function item(req, res) {
   return res.jsend({})
 }
 
-function item(req, res) {
+async function create(req, res) {
   return res.jsend({})
 }
 
-function create(req, res) {
+async function update(req, res) {
   return res.jsend({})
 }
 
-function update(req, res) {
+async function destroy(req, res) {
   return res.jsend({})
 }
 
-function destroy(req, res) {
-  return res.jsend({})
+function handleError(res, err) {
+  return res.jerror(err);
 }
+
+
 
 module.exports = {
   list,

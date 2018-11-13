@@ -4,7 +4,7 @@ const app = require('../../src/app.js')
 const ROUTE = "/"
 
 describe('Resource:Book', () => {
-    describe('GET /api/book', () => {
+    describe(`GET ${ROUTE}`, () => {
         test('response 200', async () => {
             const response = await request(app).get(ROUTE);
             expect(response.statusCode).toBe(200);

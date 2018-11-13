@@ -7,12 +7,12 @@ const institutionController = require('./controllers/institution.controller.js')
 function setRoutes(app){
   app.get('/', indexController);
   
-  app.get('/api/book', bookController.list);
-  app.get('/api/book/:isbn', bookController.item);
-  app.post('/api/book', bookController.create);
-  app.put('/api/book/:id', bookController.update);
-  app.patch('/api/book/:id', bookController.update);
-  app.delete('/api/book/:id', bookController.destroy);
+  app.get('/api/books', bookController.list);
+  app.get('/api/books/:isbn', bookController.item);
+  app.post('/api/books', bookController.create);
+  app.put('/api/books/:id', bookController.update);
+  app.patch('/api/books/:id', bookController.update);
+  app.delete('/api/books/:id', bookController.destroy);
 }
 
 module.exports = setRoutes

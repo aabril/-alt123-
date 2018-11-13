@@ -14,7 +14,13 @@ async function list(req, res) {
 }
 
 async function item(req, res) {
-  return res.jsend({})
+  try{
+    const isbn = req.param.isbn
+    const book = await Book.find({isbn: isbn})
+    return res.jsend(book)
+  }catch(err){
+    return handleError(res, err)
+  }
 }
 
 async function create(req, res) {

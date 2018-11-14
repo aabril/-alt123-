@@ -1,7 +1,7 @@
 const request = require('supertest');
 const app = require('../../src/app.js')
 
-const ROUTE = "/api/books"
+const ROUTE = "/books"
 
 describe('Resource:Book', () => {
     describe(`GET ${ROUTE}`, () => {

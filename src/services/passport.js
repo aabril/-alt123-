@@ -1,8 +1,8 @@
 const passport = require('passport');
-const { Strategy: LocalStrategy } = require('passport-local');
+const passportJWT = require('passport-jwt');
 const User = require('../models/user.model');
 
-// Serialize and deserialize definitions
+const config = require('../../config')
 
 function serializeUserCb(user, done) {
   done(null, user.id)
@@ -14,67 +14,48 @@ function deserializeUserCb(id, done) {
   });
 }
 
-const localStrategyOptions = {
-  usernameField: 'email'
-}
-
-function localStrategyCb(email, password, done) {
-  const findQuery = { email: email.toLowerCase() }
-  const findCb = (err, user) => {
-    if (err) return done(err);
-    if (!user) return done(null, false, { msg: `Email ${email} not found.` });
-    const comparePasswordCb = (err, isMatch) => {
-      if (err) return done(err);
-      if (isMatch) return done(null, user);
-      return done(null, false, { msg: 'Invalid email or password.' });
-    }
-    user.comparePassword(password, comparePasswordCb);
-  }
-  User.findOne(findQuery, findCb);
-}
-const localStrategy = new LocalStrategy(localStrategyOptions, localStrategyCb)
-
-
-// Set Password Methods and Strategy
-
 passport.serializeUser(serializeUserCb);
 passport.deserializeUser(deserializeUserCb);
-passport.use(localStrategy)
 
 
-// Authorisation Middlewares
-
-function isAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) return next();
-  res.redirect('/login');
-}
-
-function isAuthorized(role) {
-  return function(req, res, next) {
-    const isAuthenticated = req.isAuthenticated
-    const roleMatch = req.user.role === role
-    if (isAuthenticated && roleMatch){
-      next()
-    }else{
-      return res.jerror('UnauthorisedRoute', 'role does not match therefore has no permission to access this route')
-    }
+function setupJwtStrategy(){
+  const ExtractJwt = passportJWT.ExtractJwt;
+  const Strategy = passportJWT.Strategy;
+    
+  const strategyParams = {
+    secretOrKey: config.jwt.secret,
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
   }
+  
+  function strategyCb(payload, done) {
+    const userId = payload.id
+    const findOneQuery = { _id: userId }
+    const findOneCb = (err, user) => {
+      if (err) return done(err);
+      if (!user) return done(new Error("User not found"), null);
+      return done(null, { id: user.id });
+    }
+    User.findOne(findOneQuery, findOneCb)
+  }
+  
+  const jwtStrategy = new Strategy(strategyParams, strategyCb)
+  passport.use(jwtStrategy)
 }
 
-function setPassport(app) {
+function initialize(app) {
   app.use(passport.initialize());
 }
 
-function setUser(app) {
-  app.use((req, res, next) => {
-    res.locals.user = req.user;
-    next();
-  });
+function isAuthenticated(req, res, next){
+  const authenticateCustomHandler = (err, user, info) => {
+      if(err || !user) return res.jerror('JwtUnauthorized', 'The Bearer Token given is incorrect.');
+      return next(); 
+  }
+  passport.authenticate('jwt', config.jwt.session, authenticateCustomHandler)(req, res, next)
 }
 
 module.exports = {
-  isAuthenticated,
-  isAuthorized,
-  setPassport,
-  setUser
+  initialize,
+  setupJwtStrategy,
+  isAuthenticated
 }

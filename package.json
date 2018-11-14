@@ -15,6 +15,7 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
+    "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "express-jsend": "^0.1.0",
     "jwt-simple": "^0.5.5",

@@ -14,12 +14,14 @@ const BookSchema = new Schema({
   author: String
 });
 
-BookSchema.set('toJSON', {
-  transform: function (doc, ret, options) {
-      ret.id = ret._id;
-      delete ret._id;
-      delete ret.__v;
-  }
-}); 
 
-module.exports = mongoose.model('Thing', BookSchema);
+function trasnformObject(doc, ret, options) {
+  ret.id = ret._id;
+  delete ret._id;
+  delete ret.__v;
+}
+
+BookSchema.set('toJSON', { transform: trasnformObject }); 
+BookSchema.set('toObject', { transform: trasnformObject }); 
+
+module.exports = mongoose.model('Book', BookSchema);

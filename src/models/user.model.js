@@ -4,7 +4,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
-const User = new Schema({
+const UserSchema = new Schema({
   name: { 
     type: String
   },
@@ -26,7 +26,7 @@ function trasnformObject(doc, ret, options) {
   delete ret.__v;
 }
 
-User.set('toJSON', { transform: trasnformObject }); 
-User.set('toObject', { transform: trasnformObject }); 
+UserSchema.set('toJSON', { transform: trasnformObject }); 
+UserSchema.set('toObject', { transform: trasnformObject }); 
 
-module.exports = mongoose.model('User', User);
+module.exports = mongoose.model('User', UserSchema);

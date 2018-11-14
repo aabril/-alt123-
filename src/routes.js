@@ -1,7 +1,7 @@
-const mainController = require('./controllers/main.controller.js');
-const bookController = require('./controllers/book.controller.js');
-const userController = require('./controllers/user.controller.js');
-const passportService = require('./services/passport')
+const mainController = require('./controllers/main.controller')
+const bookController = require('./controllers/book.controller')
+const userController = require('./controllers/user.controller')
+const passportService = require('./services/passport.service')
 
 function setBookRoutes(app){
   app.get('/books', passportService.isAuthenticated, bookController.list);

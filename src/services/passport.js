@@ -49,6 +49,18 @@ function isAuthenticated(req, res, next) {
   res.redirect('/login');
 }
 
+function isAuthorized(role) {
+  return function(req, res, next) {
+    const isAuthenticated = req.isAuthenticated
+    const roleMatch = req.user.role === role
+    if (isAuthenticated && roleMatch){
+      next()
+    }else{
+      return res.jerror('UnauthorisedRoute', 'role does not match therefore has no permission to access this route')
+    }
+  }
+}
+
 function setPassport(app) {
   app.use(passport.initialize());
 }
@@ -62,6 +74,7 @@ function setUser(app) {
 
 module.exports = {
   isAuthenticated,
+  isAuthorized,
   setPassport,
   setUser
 }

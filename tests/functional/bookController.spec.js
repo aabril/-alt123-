@@ -1,6 +1,7 @@
+require('dotenv').config({ path: '../../env.test' });
+
 const request = require('supertest');
 const app = require('../../src/app.js')
-
 const ROUTE = "/books"
 
 describe('Resource:Book', () => {

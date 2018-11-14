@@ -10,15 +10,23 @@ const UserSchema = new Schema({
     type: String
   },
   email: { 
-    type: String
+    type: String,
+    required: true,
+    unique: true
   },
   role: { 
     type: String,
-    enum: ['student', 'academic', 'administrator']
+    enum: ['student', 'academic', 'administrator'],
+    default: 'student'
   },
   password: {
-    type: String
+    type: String,
+    required: true
   },
+  institution: {
+    type: Schema.Types.ObjectId, 
+    ref: 'Institution'
+  }
 });
 
 function hookPreSave(next) {
@@ -44,6 +52,7 @@ function comparePassword(candidatePassword, cb) {
 
 function trasnformObject(doc, ret, options) {
   ret.id = ret._id;
+  delete ret.password;
   delete ret._id;
   delete ret.__v;
 }

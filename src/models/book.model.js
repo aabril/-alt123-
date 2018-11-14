@@ -10,8 +10,16 @@ const BookSchema = new Schema({
     required: true,
     unique: true
   },
-  title: String,
-  author: String
+  title: {
+    type: String
+  },
+  author: {
+    type: String
+  }, 
+  institution: { 
+    type: Schema.Types.ObjectId, 
+    ref: 'Institution'
+  }
 });
 
 

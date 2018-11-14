@@ -2,6 +2,8 @@ require('dotenv').config({ path: '../../env.test' });
 
 const request = require('supertest');
 const app = require('../../src/app.js')
+const User = require('../../src/models/user.model')
+
 
 describe('Resource:User', () => {
     describe(`POST /users/create`, () => {
@@ -114,4 +116,12 @@ describe('Resource:User', () => {
 
     })
 
+    afterAll(async () => {
+      try {
+          await User.deleteMany({})
+          await Book.deleteMany({})
+      }catch(e){
+          console.log(err)
+      }
+  })
 })

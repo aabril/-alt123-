@@ -36,10 +36,8 @@ async function destroy(req, res) {
 }
 
 function handleError(res, err) {
-  return res.jerror(err);
+  return res.jsend.error(err);
 }
-
-
 
 module.exports = {
   list,

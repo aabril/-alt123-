@@ -20,12 +20,13 @@ const User = new Schema({
   },
 });
 
-User.set('toJSON', {
-  transform: function (doc, ret, options) {
-      ret.id = ret._id;
-      delete ret._id;
-      delete ret.__v;
-  }
-}); 
+function trasnformObject(doc, ret, options) {
+  ret.id = ret._id;
+  delete ret._id;
+  delete ret.__v;
+}
 
-module.exports = mongoose.model('Thing', User);
+User.set('toJSON', { transform: trasnformObject }); 
+User.set('toObject', { transform: trasnformObject }); 
+
+module.exports = mongoose.model('User', User);

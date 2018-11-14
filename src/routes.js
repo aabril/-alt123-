@@ -10,12 +10,7 @@ const config = require('../config')
 const passportService = require('./services/passport')
 
 function setBookRoutes(app){
-  // app.get('/books', passport.authenticate('jwt', config.jwt.session), bookController.list);
-  // app.get('/books', bookController.list);
-
   app.get('/books', passportService.isAuthenticated, bookController.list);
-
-
   app.get('/books/:isbn', bookController.item);
   app.post('/books', bookController.create);
 }

@@ -24,15 +24,17 @@ function setupJwtStrategy(){
     
   const strategyParams = {
     secretOrKey: config.jwt.secret,
-    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    passReqToCallback: true
   }
   
-  function strategyCb(payload, done) {
+  function strategyCb(req, payload, done) {
     const userId = payload.id
     const findOneQuery = { _id: userId }
     const findOneCb = (err, user) => {
       if (err) return done(err);
       if (!user) return done(new Error("User not found"), null);
+      req.user = user;
       return done(null, { id: user.id });
     }
     User.findOne(findOneQuery, findOneCb)

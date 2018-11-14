@@ -6,6 +6,7 @@ const Book = require('../models/book.model');
 
 async function list(req, res) {
   try{
+    console.log(req.user)
     const books = await Book.find()
     return res.jsend(books)
   }catch(err){
